@@ -1,20 +1,10 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import OtpInput from "react-otp-input";
 
 const Otp: React.FC = () => {
-  const [isMobile, setIsMobile] = useState<boolean>(false);
-
-  useEffect(() => {
-    const userAgent = navigator.userAgent.toLowerCase();
-    if (/mobile/i.test(userAgent)) {
-      setIsMobile(true);
-    } else {
-      setIsMobile(false);
-    }
-  }, []);
-
   const [otp, setOtp] = useState<string>("");
+
   return (
     <div>
       <OtpInput
@@ -25,6 +15,8 @@ const Otp: React.FC = () => {
         renderInput={(props) => (
           <input
             {...props}
+            inputMode="numeric" // Ensures numeric keyboard on mobile
+            pattern="[0-9]*" // Additional safeguard for numeric input
             style={{
               border: "1px black solid",
               borderRadius: "6px",
