@@ -5,15 +5,18 @@ import OtpInput from "react-otp-input";
 const Otp = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [otp, setOtp] = useState("");
+  const [customInput, setCustomInput] = useState("");
 
   useEffect(() => {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    if (/android|iPad|iPhone|iPod/i.test(userAgent)) {
-      setIsMobile(true);
-    } else {
-      setIsMobile(false);
-    }
+    setIsMobile(/android|iPad|iPhone|iPod/i.test(userAgent));
   }, []);
+
+  // Handle numeric-only input for the custom input field
+  const handleCustomInputChange = (event) => {
+    const value = event.target.value.replace(/[^0-9]/g, "");
+    setCustomInput(value);
+  };
 
   return (
     <div>
@@ -40,6 +43,24 @@ const Otp = () => {
           />
         )}
       />
+      <div>
+        <input
+          className="input-number"
+          type="text"
+          maxLength="5"
+          value={customInput}
+          onChange={handleCustomInputChange}
+          style={{
+            width: "200px",
+            height: "40px",
+            fontSize: "1.5rem",
+            textAlign: "center",
+            margin: "1rem",
+            border: "1px solid #ccc",
+            borderRadius: "6px",
+          }}
+        />
+      </div>
       <button
         type="button"
         style={{
