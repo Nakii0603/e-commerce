@@ -32,6 +32,7 @@ export default function Example() {
             placeholder="Enter phone number"
             value={phoneNumber}
             onChange={setPhoneNumber}
+            inputMode="tel" // Ensures numeric keyboard on mobile
           />
           <button
             onClick={handleNextStep}
@@ -48,15 +49,16 @@ export default function Example() {
             value={otp}
             onChange={setOtp}
             numInputs={6}
-            renderSeparator={<span style={{ width: "20px" }}></span>} // Adjust separator spacing
+            renderSeparator={<span style={{ width: "10px" }}></span>}
             renderInput={(props) => (
               <input
                 {...props}
-                className="border-[1px] text-center rounded-[4px] border-black "
-                type="number"
+                className="border-[1px] text-center rounded-[4px] border-black"
+                type="text"
+                inputMode="numeric" // Ensures numeric keyboard
                 style={{
-                  width: "30px",
-                  height: "30px",
+                  width: "40px",
+                  height: "40px",
                 }}
               />
             )}
