@@ -53,6 +53,7 @@ export default function Example() {
               <input
                 {...props}
                 className="border-[1px] text-center rounded-[4px] border-black "
+                type="number"
                 style={{
                   width: "30px",
                   height: "30px",
