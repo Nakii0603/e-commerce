@@ -30,7 +30,7 @@ const Otp = () => {
           <input
             {...props}
             inputMode="numeric"
-            type="tel"
+            type="number"
             style={{
               border: "1px black solid",
               borderRadius: "6px",
