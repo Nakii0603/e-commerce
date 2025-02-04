@@ -1,19 +1,20 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, ChangeEvent } from "react";
 import OtpInput from "react-otp-input";
 
 const Otp = () => {
-  const [isMobile, setIsMobile] = useState(false);
-  const [otp, setOtp] = useState("");
-  const [customInput, setCustomInput] = useState("");
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [otp, setOtp] = useState<string>("");
+  const [customInput, setCustomInput] = useState<string>("");
 
   useEffect(() => {
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const userAgent =
+      navigator.userAgent || navigator.vendor || (window as any).opera;
     setIsMobile(/android|iPad|iPhone|iPod/i.test(userAgent));
   }, []);
 
   // Handle numeric-only input for the custom input field
-  const handleCustomInputChange = (event) => {
+  const handleCustomInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value.replace(/[^0-9]/g, "");
     setCustomInput(value);
   };
@@ -23,7 +24,7 @@ const Otp = () => {
       <h1>{isMobile ? "Mobile Device" : "Desktop/PC"}</h1>
       <OtpInput
         value={otp}
-        onChange={(value) => setOtp(value)}
+        onChange={(value: string) => setOtp(value)}
         numInputs={6}
         renderSeparator={<span></span>}
         renderInput={(props) => (
@@ -47,7 +48,7 @@ const Otp = () => {
         <input
           className="input-number"
           type="text"
-          maxLength="5"
+          maxLength={5}
           value={customInput}
           onChange={handleCustomInputChange}
           style={{
