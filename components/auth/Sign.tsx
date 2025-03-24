@@ -49,6 +49,7 @@ export default function Sign() {
   return (
     <div className="flex flex-col gap-2 justify-center items-center h-screen">
       <h1>Sign</h1>
+      
       <input
         className="border-[1px] p-1 border-black rounded-[4px]"
         type="email"
