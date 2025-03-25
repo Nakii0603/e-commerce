@@ -1,6 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import CreatePost from "@/app/shop/components/CreatePost";
 
 export default function Page() {
   const router = useRouter();
@@ -13,5 +14,5 @@ export default function Page() {
     }
   }, [router]);
 
-  return <div>page</div>;
+  return <div>g</div>;
 }
