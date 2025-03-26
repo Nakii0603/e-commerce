@@ -80,13 +80,14 @@ export default function SignIn() {
             password: formData.password,
           }
         );
-        console.log(response.data);
 
-        if (response.data.message === "User registered successfully") {
-          router.push("/login"); // Redirect to login page after successful registration
+        const message = response.data.message;
+        if (message === "Shop registered successfully") {
+          router.push("/login"); 
           setErrorMessage("");
         } else {
-          setErrorMessage("Error creating account. Please try again.");
+          message == "Email already in use";
+          setErrorMessage("Email already in use");
         }
       } catch (error) {
         setErrorMessage("Error creating account. Please try again.");
