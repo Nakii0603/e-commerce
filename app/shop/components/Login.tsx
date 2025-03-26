@@ -16,9 +16,10 @@ export default function ShopLogin() {
         `${process.env.NEXT_PUBLIC_APP_API_URL}/api/auth/shop/login`, // Adjusted endpoint
         { email, password } // Send email instead of username
       );
-      console.log(response.data.message);
-      
       localStorage.setItem("token", response.data.token);
+      localStorage.setItem("id", response.data.shop.shopId);
+      console.log(response.data.shop.shopId);
+      
       router.push("/dashboard");
     } catch (error) {
       console.error("Error during API call", error);
@@ -27,7 +28,7 @@ export default function ShopLogin() {
 
   return (
     <div className="flex flex-col gap-2 justify-center items-center h-screen">
-      <h1>Login</h1>
+      <h1>Login shop</h1>
       <input
         className="w-[300px] border-[1px] border-black h-[40px] rounded-md px-2"
         type="email" // Use 'email' input type for validation

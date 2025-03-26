@@ -12,11 +12,11 @@ const CreatePost = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const router = useRouter();
 
-  const handleImageChange = (e:any) => {
+  const handleImageChange = (e: any) => {
     setImage(e.target.files[0]);
   };
 
-  const handleSubmit = async (e:any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     setSuccessMessage("");
     setErrorMessage("");
@@ -57,7 +57,7 @@ const CreatePost = () => {
 
   return (
     <div className="max-w-2xl mx-auto p-6">
-      <h1 className="text-3xl font-bold text-center  mb-6">Create a post</h1>
+      <h1 className="text-3xl font-bold text-center  mb-6">Create a order</h1>
 
       {successMessage && (
         <div className="mb-4 p-4 bg-green-100 text-green-800 border border-green-300 rounded-md">
@@ -86,7 +86,7 @@ const CreatePost = () => {
         </div>
         <div>
           <label htmlFor="content" className="block text-lg ">
-            Content
+            details
           </label>
           <textarea
             id="content"
@@ -110,7 +110,7 @@ const CreatePost = () => {
         <button
           type="submit"
           disabled={loading}
-          className="w-full py-2 bg-blue-600 text-white font-semibold rounded-md"
+          className="w-full py-2 bg-[#FF5349] text-white font-semibold rounded-md"
         >
           {loading ? "Uploading..." : "Create Post"}
         </button>

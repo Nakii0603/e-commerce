@@ -1,7 +1,8 @@
 "use client";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import CreatePost from "@/app/shop/components/CreatePost";
+import ShopNavbar from "../shop/components/ShopNavbar";
+import CreatePost from "../shop/components/CreatePost";
 
 export default function Page() {
   const router = useRouter();
@@ -14,5 +15,12 @@ export default function Page() {
     }
   }, [router]);
 
-  return <div>g</div>;
+
+
+  return (
+    <div>
+      <ShopNavbar />
+      <CreatePost />
+    </div>
+  );
 }
