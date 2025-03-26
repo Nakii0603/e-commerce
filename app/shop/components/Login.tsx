@@ -16,6 +16,8 @@ export default function ShopLogin() {
         `${process.env.NEXT_PUBLIC_APP_API_URL}/api/auth/shop/login`, // Adjusted endpoint
         { email, password } // Send email instead of username
       );
+      console.log(response.data.message);
+      
       localStorage.setItem("token", response.data.token);
       router.push("/dashboard");
     } catch (error) {
