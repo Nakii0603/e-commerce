@@ -1,7 +1,9 @@
-import React from 'react'
+import Posts from '@/app/shop/components/Posts'
 
 export default function page() {
   return (
-    <div>page</div>
+    <div>
+      <Posts/>
+    </div>
   )
 }

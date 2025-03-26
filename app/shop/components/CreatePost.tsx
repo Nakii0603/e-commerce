@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 const CreatePost = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [price, setPrice] = useState(""); // Added price state
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
@@ -21,14 +22,18 @@ const CreatePost = () => {
     setSuccessMessage("");
     setErrorMessage("");
 
-    if (!title || !content || !image) {
-      setErrorMessage("All fields are required: Title, Content, and Image.");
+    if (!title || !content || !image || !price) {
+      // Check if price is also filled
+      setErrorMessage(
+        "All fields are required: Title, Content, Image, and Price."
+      );
       return;
     }
 
     const formData = new FormData();
     formData.append("title", title);
     formData.append("content", content);
+    formData.append("price", price); // Append price to the formData
     formData.append("image", image);
 
     setLoading(true);
@@ -45,6 +50,7 @@ const CreatePost = () => {
       setSuccessMessage("Post created successfully!");
       setTitle("");
       setContent("");
+      setPrice(""); // Clear the price input after submit
       setImage(null);
     } catch (error) {
       setLoading(false);
@@ -57,7 +63,7 @@ const CreatePost = () => {
 
   return (
     <div className="max-w-2xl mx-auto p-6">
-      <h1 className="text-3xl font-bold text-center  mb-6">Create a order</h1>
+      <h1 className="text-3xl font-bold text-center mb-6">Create a Post</h1>
 
       {successMessage && (
         <div className="mb-4 p-4 bg-green-100 text-green-800 border border-green-300 rounded-md">
@@ -72,7 +78,7 @@ const CreatePost = () => {
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="title" className="block text-lg ">
+          <label htmlFor="title" className="block text-lg">
             Title
           </label>
           <input
@@ -85,8 +91,8 @@ const CreatePost = () => {
           />
         </div>
         <div>
-          <label htmlFor="content" className="block text-lg ">
-            details
+          <label htmlFor="content" className="block text-lg">
+            Details
           </label>
           <textarea
             id="content"
@@ -97,14 +103,27 @@ const CreatePost = () => {
           ></textarea>
         </div>
         <div>
-          <label htmlFor="image" className="block text-lg ">
+          <label htmlFor="price" className="block text-lg">
+            Price
+          </label>
+          <input
+            type="text"
+            id="price"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+            required
+            className="w-full px-4 py-2 border border-gray-300 rounded-md"
+          />
+        </div>
+        <div>
+          <label htmlFor="image" className="block text-lg">
             Image
           </label>
           <input
             type="file"
             id="image"
             onChange={handleImageChange}
-            className="w-full py-2 "
+            className="w-full py-2"
           />
         </div>
         <button
