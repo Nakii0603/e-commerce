@@ -83,7 +83,7 @@ export default function SignIn() {
 
         const message = response.data.message;
         if (message === "Shop registered successfully") {
-          router.push("/login"); 
+          router.push("/"); 
           setErrorMessage("");
         } else {
           message == "Email already in use";
@@ -117,7 +117,7 @@ export default function SignIn() {
             <button
               type="button"
               onClick={handleNextStep}
-              className="w-[300px] h-[40px] bg-[#FF5349] text-white rounded-md"
+              className="w-[300px] h-[40px] bg-[#1443FF] text-white rounded-md"
             >
               Next
             </button>
