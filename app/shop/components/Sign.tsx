@@ -26,7 +26,6 @@ export default function SignIn() {
   const handleNextStep = async () => {
     if (step === 1) {
       // Step 1: Send OTP to the email
-      
       try {
         const response = await axios.post(
           `${process.env.NEXT_PUBLIC_APP_API_URL}/api/otp/send-otp`,
