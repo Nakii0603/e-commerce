@@ -112,7 +112,7 @@ export default function AuthPage() {
       {/* Left Panel */}
       <motion.div
         className={`w-1/2 flex justify-center items-center ${
-          isLoginView ? "bg-primary text-white" : ""
+          isLoginView ? "bg-primary-blue text-white" : ""
         } transition-colors duration-800`}
         initial={{ opacity: 0, x: -200 }}
         animate={{ opacity: 1, x: 0 }}
@@ -140,11 +140,11 @@ export default function AuthPage() {
                     onChange={(e) => handleOnChange("email", e.target.value)}
                     className="w-[300px] border border-black h-[40px] rounded-md px-2"
                   />
-                  {errorMessage && <p className="text-primary">{errorMessage}</p>}
+                  {errorMessage && <p className="text-primary-blue">{errorMessage}</p>}
                   <button
                     type="button"
                     onClick={handleNextStep}
-                    className="w-[300px] h-[40px] bg-primary text-white rounded-md"
+                    className="w-[300px] h-[40px] bg-primary-blue text-white rounded-md"
                   >
                     Next
                   </button>
@@ -160,7 +160,7 @@ export default function AuthPage() {
                     onChange={(e) => handleOnChange("otp", e.target.value)}
                     className="w-[300px] border border-black h-[40px] rounded-md px-2"
                   />
-                  {errorMessage && <p className="text-primary">{errorMessage}</p>}
+                  {errorMessage && <p className="text-primary-blue">{errorMessage}</p>}
                   <div className="flex justify-between mt-4">
                     <button
                       type="button"
@@ -172,7 +172,7 @@ export default function AuthPage() {
                     <button
                       type="button"
                       onClick={handleNextStep}
-                      className="w-[140px] h-[40px] bg-primary text-white rounded-md"
+                      className="w-[140px] h-[40px] bg-primary-blue text-white rounded-md"
                     >
                       Next
                     </button>
@@ -196,7 +196,7 @@ export default function AuthPage() {
                     onChange={(e) => handleOnChange("repassword", e.target.value)}
                     className="w-[300px] border border-black h-[40px] rounded-md px-2"
                   />
-                  {errorMessage && <p className="text-primary">{errorMessage}</p>}
+                  {errorMessage && <p className="text-primary-blue">{errorMessage}</p>}
                   <div className="flex justify-between mt-4">
                     <button
                       type="button"
@@ -208,7 +208,7 @@ export default function AuthPage() {
                     <button
                       type="button"
                       onClick={handleNextStep}
-                      className="w-[140px] h-[40px] bg-primary text-white rounded-md"
+                      className="w-[140px] h-[40px] bg-primary-blue text-white rounded-md"
                     >
                       Submit
                     </button>
@@ -216,7 +216,7 @@ export default function AuthPage() {
                 </>
               )}
 
-              <p className="mt-4 text-primary cursor-pointer text-sm text-center" onClick={handleToggle}>
+              <p className="mt-4 text-primary-blue cursor-pointer text-sm text-center" onClick={handleToggle}>
                 Already have an account? Login
               </p>
             </motion.form>
@@ -227,7 +227,7 @@ export default function AuthPage() {
       {/* Right Panel */}
       <motion.div
         className={`w-1/2 flex justify-center items-center ${
-          !isLoginView ? "bg-primary text-white" : ""
+          !isLoginView ? "bg-primary-blue text-white" : ""
         }transition-colors duration-800`}
         initial={{ opacity: 0, x: 200 }}
         animate={{ opacity: 1, x: 0 }}
@@ -259,14 +259,14 @@ export default function AuthPage() {
                 onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
                 className="w-[300px] border border-black h-[40px] rounded-md px-2"
               />
-              {errorMessage && <p className="text-primary">{errorMessage}</p>}
+              {errorMessage && <p className="text-primary-blue">{errorMessage}</p>}
               <div
                 onClick={handleLogin}
-                className="bg-primary w-[300px] text-center rounded-md text-white py-2 cursor-pointer"
+                className="bg-primary-blue w-[300px] text-center rounded-md text-white py-2 cursor-pointer"
               >
                 Login
               </div>
-              <p className="mt-4 text-primary cursor-pointer text-sm text-center" onClick={handleToggle}>
+              <p className="mt-4 text-primary-blue cursor-pointer text-sm text-center" onClick={handleToggle}>
                 Don’t have an account? Sign up
               </p>
             </motion.form>
