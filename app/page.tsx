@@ -105,24 +105,24 @@ export default function AuthPage() {
         email,
         password,
       });
-
-      const { message, token } = response.data;
+      console.log(response.data);
+      const { message, token, shopId } = response.data;
 
       if (message === "Email or password wrong") {
         toast.error("Email or password wrong");
         return;
       }
 
-      if (token) {
+      if (message === "Login successful") {
         localStorage.setItem("token", token);
+        localStorage.setItem("shopId", shopId);
         toast.success("Login successful");
         router.push("dashboard");
       } else {
-        toast.error("Login failed. No token received.");
+        toast.error(message);
       }
-    } catch (error: any) {
-      const message = error.response?.data?.message || "Login failed.";
-      toast.error(message);
+    } catch (error) {
+      toast.error("Login failed");
     }
   };
 

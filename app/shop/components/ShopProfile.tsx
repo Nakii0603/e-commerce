@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { tr } from "framer-motion/client";
 
 export default function ShopProfile() {
   const [shop, setShop] = useState<string | null>(null);
@@ -10,33 +11,16 @@ export default function ShopProfile() {
   const [isModalOpen, setIsModalOpen] = useState(false); // To control modal visibility
   const router = useRouter();
 
-  useEffect(() => {
-    const shopid = localStorage.getItem("id");
-    if (shopid) {
-      setShop(shopid);
-    } else {
-      console.log("Shop ID not found.");
-    }
-  }, []);
-
-  const getInfo = async (shopid: string) => {
+  const getInfo = async () => {
     try {
-      const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_APP_API_URL}/api/auth/shop/getInfo/${shopid}`
-      );
+      const shopId = localStorage.getItem("shopId");
+      console.log(shopId);
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_APP_API_URL}/api/auth/shop/getInfo/${shopId}`);
       const shopData = response.data.shop;
       setShopData(shopData);
+      setIsModalOpen(true)
     } catch (error) {
       console.log("Error during API call");
-    }
-  };
-
-  const handleClick = () => {
-    if (shop) {
-      getInfo(shop);
-      setIsModalOpen(true); // Open the modal after fetching data
-    } else {
-      console.log("Shop ID is not available");
     }
   };
 
@@ -46,10 +30,7 @@ export default function ShopProfile() {
 
   return (
     <div>
-      <div
-        className="w-[40px] text-center rounded-[4px] text-white  p-1 cursor-pointer"
-        onClick={handleClick}
-      >
+      <div className="w-[40px] text-center rounded-[4px] text-white  p-1 cursor-pointer" onClick={getInfo}>
         <img src="/user.png" alt="User Icon" />
       </div>
 
@@ -72,10 +53,7 @@ export default function ShopProfile() {
                 <p>Shop ID: {shopData.shopId}</p>
               </div>
             )}
-            <button
-              onClick={closeModal}
-              className="bg-red-500 text-white px-4 py-2 rounded mt-4"
-            >
+            <button onClick={closeModal} className="bg-red-500 text-white px-4 py-2 rounded mt-4">
               Close
             </button>
           </div>
