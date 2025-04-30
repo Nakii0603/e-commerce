@@ -131,8 +131,8 @@ export default function AuthPage() {
       <ToastContainer position="top-center" autoClose={3000} />
       {/* Left Panel - Signup */}
       <motion.div
-        className={`w-1/2 flex justify-center items-center ${
-          isLoginView ? "bg-primary text-white" : ""
+        className={`w-1/2 max-sm:w-full flex justify-center items-center ${
+          isLoginView ? "bg-primary text-white max-sm:hidden" : ""
         } transition-colors duration-800`}
         initial={{ opacity: 0, x: -200 }}
         animate={{ opacity: 1, x: 0 }}
@@ -243,8 +243,8 @@ export default function AuthPage() {
 
       {/* Right Panel - Login */}
       <motion.div
-        className={`w-1/2 flex justify-center items-center ${
-          !isLoginView ? "bg-primary text-white " : ""
+        className={`w-1/2 flex max-sm:w-full justify-center items-center ${
+          !isLoginView ? "bg-primary text-white max-sm:hidden" : ""
         } transition-colors duration-800`}
         initial={{ opacity: 0, x: 200 }}
         animate={{ opacity: 1, x: 0 }}
