@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function AuthPage() {
   const router = useRouter();
-  const [isLoginView, setIsLoginView] = useState(false);
+  const [isLoginView, setIsLoginView] = useState(true);
   const [formData, setFormData] = useState({
     email: "",
     otp: "",
@@ -76,13 +76,13 @@ export default function AuthPage() {
       }
 
       try {
-        const response = await axios.post(`${process.env.NEXT_PUBLIC_APP_API_URL}/api/auth/register`, {
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_APP_API_URL}/api/auth/shop/register`, {
           email: formData.email,
           password: formData.password,
         });
-        if (response.data.message === "User registered successfully") {
+        if (response.data.message === "Shop registered successfully") {
           toast.success("Registration successful! Redirecting to login...");
-          setTimeout(() => router.push("/login"), 2000);
+          setTimeout(() => router.push("/"), 2000);
         } else {
           toast.error("Email already in use");
         }
@@ -101,7 +101,10 @@ export default function AuthPage() {
     }
 
     try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_APP_API_URL}/api/auth/login`, { email, password });
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_APP_API_URL}/api/auth/shop/login`, {
+        email,
+        password,
+      });
 
       const { message, token } = response.data;
 
@@ -113,6 +116,7 @@ export default function AuthPage() {
       if (token) {
         localStorage.setItem("token", token);
         toast.success("Login successful");
+        router.push("dashboard");
       } else {
         toast.error("Login failed. No token received.");
       }
@@ -132,7 +136,7 @@ export default function AuthPage() {
       {/* Left Panel - Signup */}
       <motion.div
         className={`w-1/2 max-sm:w-full flex justify-center items-center ${
-          isLoginView ? "bg-primary text-white max-sm:hidden" : ""
+          isLoginView ? "bg-primary-blue text-white max-sm:hidden" : ""
         } transition-colors duration-800`}
         initial={{ opacity: 0, x: -200 }}
         animate={{ opacity: 1, x: 0 }}
@@ -149,7 +153,7 @@ export default function AuthPage() {
               transition={{ duration: 0.8 }}
               className="flex flex-col gap-4"
             >
-              <h1 className="text-2xl flex justify-center mb-4">Sign Up user</h1>
+              <h1 className="text-2xl flex justify-center mb-4">Sign Up shop</h1>
 
               {step === 1 && (
                 <>
@@ -163,7 +167,7 @@ export default function AuthPage() {
                   <button
                     type="button"
                     onClick={handleNextStep}
-                    className="w-[300px] h-[40px] bg-primary text-white rounded-md"
+                    className="w-[300px] h-[40px] bg-primary-blue text-white rounded-md"
                   >
                     Next
                   </button>
@@ -190,7 +194,7 @@ export default function AuthPage() {
                     <button
                       type="button"
                       onClick={handleNextStep}
-                      className="w-[140px] h-[40px] bg-primary text-white rounded-md"
+                      className="w-[140px] h-[40px] bg-primary-blue text-white rounded-md"
                     >
                       Next
                     </button>
@@ -225,7 +229,7 @@ export default function AuthPage() {
                     <button
                       type="button"
                       onClick={handleNextStep}
-                      className="w-[140px] h-[40px] bg-primary text-white rounded-md"
+                      className="w-[140px] h-[40px] bg-primary-blue text-white rounded-md"
                     >
                       Submit
                     </button>
@@ -233,7 +237,7 @@ export default function AuthPage() {
                 </>
               )}
 
-              <p className="mt-4 text-primary cursor-pointer text-sm text-center" onClick={handleToggle}>
+              <p className="mt-4 text-primary-blue cursor-pointer text-sm text-center" onClick={handleToggle}>
                 Already have an account? Login
               </p>
             </motion.form>
@@ -244,7 +248,7 @@ export default function AuthPage() {
       {/* Right Panel - Login */}
       <motion.div
         className={`w-1/2 flex max-sm:w-full justify-center items-center ${
-          !isLoginView ? "bg-primary text-white max-sm:hidden" : ""
+          !isLoginView ? "bg-primary-blue text-white max-sm:hidden" : ""
         } transition-colors duration-800`}
         initial={{ opacity: 0, x: 200 }}
         animate={{ opacity: 1, x: 0 }}
@@ -261,7 +265,7 @@ export default function AuthPage() {
               transition={{ duration: 0.8 }}
               className="flex flex-col gap-4"
             >
-              <h1 className="text-2xl mb-4 text-center">Login User</h1>
+              <h1 className="text-2xl mb-4 text-center">Login shop</h1>
 
               <input
                 type="email"
@@ -280,12 +284,12 @@ export default function AuthPage() {
 
               <div
                 onClick={handleLogin}
-                className="bg-primary w-[300px] text-center rounded-md text-white py-2 cursor-pointer"
+                className="bg-primary-blue w-[300px] text-center rounded-md text-white py-2 cursor-pointer"
               >
                 Login
               </div>
 
-              <p className="mt-4 text-primary cursor-pointer text-sm text-center" onClick={handleToggle}>
+              <p className="mt-4 text-primary-blue cursor-pointer text-sm text-center" onClick={handleToggle}>
                 Don’t have an account? Sign up
               </p>
             </motion.form>
