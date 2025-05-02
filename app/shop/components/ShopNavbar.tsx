@@ -10,8 +10,8 @@ export default function ShopNavbar() {
           <Link className="text-[24px] max-md:text-[16px]" href="#">
             Create post
           </Link>
-          <Link className="text-[24px] max-md:text-[16px]" href="#">
-            Post list
+          <Link className="text-[24px] max-md:text-[16px]" href="dashboard/product">
+            Product list
           </Link>
           <Link className="text-[24px] max-md:text-[16px]" href="#">
             Contact list

@@ -22,7 +22,6 @@ const CreateProduct = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const router = useRouter();
 
-  // Ensure localStorage is accessed only on the client
   useEffect(() => {
     const storedShopId = localStorage.getItem("shopId");
     if (storedShopId) {
@@ -182,7 +181,7 @@ const CreateProduct = () => {
             name="subCategory"
             value={formData.subCategory}
             onChange={handleSubCategoryChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md h-40"
           >
             {[
               "Mobiles",
