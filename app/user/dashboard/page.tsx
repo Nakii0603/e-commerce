@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar';
 
 export default function page() {
   return (
-    <div className="bg-gray-100 h-full">
+    <div >
       <Navbar />
       <DashboardProduct />
     </div>
