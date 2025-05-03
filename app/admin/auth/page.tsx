@@ -117,7 +117,7 @@ export default function AuthPage() {
         localStorage.setItem("token", token);
         localStorage.setItem("shopId", shopId);
         toast.success("Login successful");
-        router.push("dashboard");
+        router.push("./product");
       } else {
         toast.error(message);
       }
