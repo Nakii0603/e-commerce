@@ -1,5 +1,5 @@
-import Products from '@/app/shop/components/ProductList';
-import ShopNavbar from '@/app/shop/components/ShopNavbar';
+import Products from '../components/ProductList';
+import ShopNavbar from '../components/ShopNavbar';
 import React from 'react'
 
 export default function page() {

@@ -1,8 +1,8 @@
 "use client";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import ShopNavbar from "../shop/components/ShopNavbar";
-import CreateProduct from "../shop/components/CreateProduct";
+import ShopNavbar from "../components/ShopNavbar";
+import CreateProduct from "../components/CreateProduct";
 
 export default function Page() {
   const router = useRouter();
