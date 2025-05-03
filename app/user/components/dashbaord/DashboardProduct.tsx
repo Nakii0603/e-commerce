@@ -8,9 +8,6 @@ export default function DashboardProduct() {
   const [products, setProducts] = useState<any[]>([]);
 
   const getAllProducts = async () => {
-    const shopId = localStorage.getItem("shopId");
-    if (!shopId) return;
-
     try {
       const response = await axios.get(`${process.env.NEXT_PUBLIC_APP_API_URL}/api/product/getAllProducts`);
       const fetchedProducts = response.data.products;
@@ -29,7 +26,7 @@ export default function DashboardProduct() {
     <div>
       <div className="flex flex-wrap justify-evenly gap-4 p-4">
         {products.map((product) => (
-          <div key={product.productId} className="border p-4 w-60 shadow">
+          <div key={product.productId} className="border bg-white rounded-xl p-4 w-60 shadow">
             <img src={product.image} alt={product.title} className="w-full h-[200px] object-cover" />
             <h2 className="text-lg font-semibold mt-2">{product.title}</h2>
             <p className="text-gray-600">Price: ${product.price}</p>
