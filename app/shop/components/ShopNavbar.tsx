@@ -7,21 +7,21 @@ export default function ShopNavbar() {
     <div className="bg-[#FF5349]">
       <div className="flex justify-between items-center h-[60px] px-10 max-w-[1440px] mx-auto text-white gap-6">
         <div className="flex gap-6">
-          <Link className="text-[24px] max-md:text-[16px]" href="#">
+          <Link className="text-[24px] max-md:text-[16px]" href="/dashboard">
             Create post
           </Link>
           <Link className="text-[24px] max-md:text-[16px]" href="dashboard/product">
             Product list
           </Link>
           <Link className="text-[24px] max-md:text-[16px]" href="#">
-            Contact list
+            Orders
           </Link>
-          <Link className="text-[24px] max-md:text-[16px]" href="#">
+          {/* <Link className="text-[24px] max-md:text-[16px]" href="#">
             Users
           </Link>
           <Link className="text-[24px] max-md:text-[16px]" href="#">
             Lottery
-          </Link>
+          </Link> */}
         </div>
         <ShopProfile />
       </div>
