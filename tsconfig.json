@@ -27,6 +27,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/login/page.tsx"
-, "app/user/components/otp.tsx"  ],
+, "app/user/components/others/otp.tsx"  ],
   "exclude": ["node_modules"]
 }

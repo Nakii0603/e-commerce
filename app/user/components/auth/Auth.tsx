@@ -7,9 +7,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function AuthPage() {
+export default function Auth() {
   const router = useRouter();
-  const [isLoginView, setIsLoginView] = useState(false);
+  const [isLoginView, setIsLoginView] = useState(true);
   const [formData, setFormData] = useState({
     email: "",
     otp: "",
@@ -82,7 +82,7 @@ export default function AuthPage() {
         });
         if (response.data.message === "User registered successfully") {
           toast.success("Registration successful! Redirecting to login...");
-          setTimeout(() => router.push("/login"), 2000);
+          setIsLoginView(true);
         } else {
           toast.error("Email already in use");
         }
@@ -113,6 +113,7 @@ export default function AuthPage() {
       if (token) {
         localStorage.setItem("token", token);
         toast.success("Login successful");
+        router.push("/user/dashboard");
       } else {
         toast.error("Login failed. No token received.");
       }
