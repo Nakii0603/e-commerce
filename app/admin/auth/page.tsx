@@ -94,7 +94,6 @@ export default function AuthPage() {
 
   const handleLogin = async () => {
     const { email, password } = loginData;
-
     if (!email || !password) {
       toast.error("Both fields are required");
       return;
